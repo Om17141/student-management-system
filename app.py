@@ -29,7 +29,7 @@ def create_table():
 
 create_table()
 
-# ✅ SINGLE INDEX FUNCTION (WITH DASHBOARD)
+#  SINGLE INDEX FUNCTION (WITH DASHBOARD)
 @app.route("/", methods=["GET", "POST"])
 def index():
     conn = get_db()
@@ -43,7 +43,7 @@ def index():
     else:
         students = conn.execute("SELECT * FROM students").fetchall()
 
-    # 🔥 FIX: marks ko int me convert
+    
     marks_list = [int(s["marks"]) for s in students]
 
     total = len(students)
@@ -144,6 +144,6 @@ def view(id):
 
     return render_template("view.html", student=student, percentage=percentage, grade=grade)
 
-# ✅ ALWAYS KEEP THIS AT LAST
+
 if __name__ == "__main__":
     app.run(debug=True)
